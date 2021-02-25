@@ -1,5 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-image: url('./img/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+p {
+  margin: 5px;
+}
+
+.animal-card {
+  margin: 5px;
+  border: solid 2px #ffe08a;
+  border-radius: 5px;
+  background-color: #f5b400c2;
+  width: 300px;
+  height: 175px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.all-cards {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: left;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.header-box {
+  background-color: #ffe08a;
+  border-bottom: solid white;
+  height: 45px;
+  text-align: center;
+}
+
+.header-link {
+  margin: 20px 10px;
+  font-family: 'Nunito Sans', sans-serif;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.spinner {
+  height: 200px;
+  width: 400px;
 }
