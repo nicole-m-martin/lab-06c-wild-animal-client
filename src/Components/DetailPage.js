@@ -1,45 +1,42 @@
 import React, { Component } from 'react'
-import { getOneAnimal, getColors, updateWildAnimal, getWildAnimals } from '../Utils/api-utils'
+import { getOneAnimal, getSizes, updateWildAnimal } from '../Utils/api-utils'
 
 export default class DetailPage extends Component {
 
   // State //
 
     state = {
-      animal_common_name: '',
-      animal_science_name: '',
-      color_id: 1,
-      amount: 0,
+      kind: '',
+      size_id: 1,
+      age: 0,
       is_fun: false,
     }
 
     componentDidMount = async () => {
-      const colors = await getColors();
-      const oneAnimal = getOneAnimal(this.props.match.params.colorId)
-      const color_id = getColors(oneAnimal, colors)
+      const sizes = await getSizes();
+      const oneAnimal = getOneAnimal(this.props.match.params.sizeId)
+      const size_id = getSizes(oneAnimal, sizes)
 
       this.setState({
         ...oneAnimal,
-        color_id,
-        colors
+        size_id,
+        sizes
       })
     }
 
     // Handlers //
 
-    handleCommonNameChange = (e) => this.setState({ animal_common_name: e.target.value })
-
-    handleScienceNameChange = (e) => this.setState({ animal_science_name: e.target.value })
+    handleKindChange = (e) => this.setState({ kind: e.target.value })
 
     handleIsFunChange = () => this.setState({ is_fun: !this.state.is_fun })
 
-    handleAmountChange = (e) => this.setState({ amount: Number(e.target.value) })
+    handleAgeChange = (e) => this.setState({ age: Number(e.target.value) })
 
-    handleColorChange = (e) => this.setState({ color_id: Number(e.target.value) })
+    handleSizeChange = (e) => this.setState({ size_id: Number(e.target.value) })
 
     handleSubmitButton = async (e) => {
       e.preventDefault();
-      await updateWildAnimal(this.props.match.params.colorId, this.state)
+      await updateWildAnimal(this.props.match.params.sizeId, this.state)
       this.props.history.push('/wildAnimals')
     }
 
@@ -47,18 +44,15 @@ export default class DetailPage extends Component {
     return (
 
       <div>
+        <div className="form-box">
            <form onSubmit={ this.handleSubmitButton }>
           <label>
-            Wild Animal Common Name
-            <input value={ this.state.animal_common_name } onChange={ this.handleCommonNameChange } /> 
+            Wild Animal Kind
+            <input value={ this.state.kind } onChange={ this.handleKindChange } /> 
           </label>
           <label>
-            Wild Animal Scientific Name
-            <input value={ this.state.animal_science_name } onChange={ this.handleScienceNameChange } /> 
-          </label>
-          <label>
-            How many do you have? 
-            <input type='number' value={ this.state.amount } onChange={ this.handleAmountChange } /> 
+            How Old? 
+            <input type='number' value={ this.state.age } onChange={ this.handleAgeChange } /> 
           </label>
           <label>
             Is it a fun Wild Animal?
@@ -66,6 +60,7 @@ export default class DetailPage extends Component {
           </label>
           <button>Update Animal</button>
         </form>
+        </div>
       </div>
     )
   }

@@ -55,3 +55,18 @@ p {
   height: 200px;
   width: 400px;
 }
+
+.form-box {
+  border: solid black;
+  width: 375px;
+  text-align: right;
+}
+
+label {
+  display: block;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.active {
+  color: rgb(175, 56, 19);
+}
