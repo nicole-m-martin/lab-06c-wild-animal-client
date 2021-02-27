@@ -16,8 +16,13 @@ export async function getOneAnimal(id) {
   return response.body;
 }
 
+// Size Category Id Function
+export const getSizeId = (animal, sizes) => 
+sizes.find(size => animal.size === size.type).id;
+
+
 // GET One Size Function
-export async function getSizes(id) {
+export async function getSizes() {
   const response = await request
   .get(`${URL}/sizes`)
   return response.body;

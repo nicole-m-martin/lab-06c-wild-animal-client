@@ -31,7 +31,7 @@ export default class App extends Component {
                             component={ListPage} 
                         />            
                         <Route 
-                            path="/wildAnimals/:sizeId" 
+                            path="/wildAnimals/:animalId" 
                             exact
                             component={DetailPage} 
                         />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getOneAnimal, getSizes, updateWildAnimal } from '../Utils/api-utils'
+import { getOneAnimal, updateWildAnimal, deleteOneAnimal } from '../Utils/api-utils'
 
 export default class DetailPage extends Component {
 
@@ -10,19 +10,30 @@ export default class DetailPage extends Component {
       size_id: 1,
       age: 0,
       is_fun: false,
+      owner_id: 1,
+      
     }
 
     componentDidMount = async () => {
-      const sizes = await getSizes();
-      const oneAnimal = getOneAnimal(this.props.match.params.sizeId)
-      const size_id = getSizes(oneAnimal, sizes)
+      const {
+        kind, 
+        size_id, 
+        age, 
+        is_fun, 
+        owner_id
+      } = await getOneAnimal(this.props.match.params.animalId)
+  
 
-      this.setState({
-        ...oneAnimal,
-        size_id,
-        sizes
-      })
-    }
+    this.setState({
+      kind: kind,
+      size_id: size_id,
+      age: age,
+      is_fun: is_fun,
+      owner_id: owner_id
+
+    })
+
+  }
 
     // Handlers //
 
@@ -34,9 +45,14 @@ export default class DetailPage extends Component {
 
     handleSizeChange = (e) => this.setState({ size_id: Number(e.target.value) })
 
+    handleDeleteChange = async () => {
+      await deleteOneAnimal(this.state);
+      this.props.history.push('/');
+  }
+
     handleSubmitButton = async (e) => {
       e.preventDefault();
-      await updateWildAnimal(this.props.match.params.sizeId, this.state)
+      await updateWildAnimal(this.props.match.params.animalId, this.state)
       this.props.history.push('/wildAnimals')
     }
 
@@ -58,10 +74,18 @@ export default class DetailPage extends Component {
             Is it a fun Wild Animal?
             <input type='checkbox' value={ this.state.is_fun } checked={ this.state.is_fun } onChange={ this.handleIsFunChange } /> 
           </label>
-          <button>Update Animal</button>
+          <label>
+          <select value={ this.state.size_id } onChange={ this.handleSizeChange }>
+            <option value={1} selected={ this.state.size_id === 1 }>Large</option>
+            <option value={2} selected={ this.state.size_id === 2 }>Medium</option>
+            <option value={3} selected={ this.state.size_id === 3 }>Small</option>
+            </select>
+          </label>
+          <button> Update Animal </button>
         </form>
+        <button onClick={this.handleDeleteClick}> Delete Animal </button>
         </div>
       </div>
     )
   }
-}
+    }
