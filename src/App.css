@@ -1,38 +1,136 @@
-.App {
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+
+/* Main Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('./img/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+p {
+  margin: 5px;
+}
+
+/* List Page  */
+.animal-card {
+  margin: 5px;
+  border: solid 2px #ffe08a;
+  border-radius: 5px;
+  background-color: #f5b400c2;
+  width: 300px;
+  height: 175px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.all-cards {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  text-align: left;
+  width: 80%;
+  margin-left: 10%;
+}
+
+/* Header */
+.header-box {
+  background-color: #ffe08a;
+  border-bottom: solid white;
+  height: 45px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-link {
+  margin: 20px 10px;
+  font-family: 'Nunito Sans', sans-serif;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.active {
+  color: rgb(175, 56, 19);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Spinner */
+.spinner {
+  height: 200px;
+  width: 400px;
 }
 
-.App-link {
-  color: #61dafb;
+/* HomePage */
+.welcome-box {
+  font-family: 'Stick', sans-serif;
+  color: rgb(175, 56, 19);
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Forms */
+.container {
+  margin: 30px auto;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.form-wrap {
+  background-color: #ffe08a;
+  padding: 15px 25px;
+}
+
+.form-wrap h1,
+.form-wrap p {
+  text-align: center;
+  color: rgb(175, 56, 19);
+}
+
+.form-wrap .form-group {
+  display: block;
+  padding: 15px;
+}
+
+.form-wrap .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 5px;
+}
+
+.form-wrap button,
+.form-wrap select {
+  color: #fff;
+  background-color: #f5b400c2;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.form-wrap button:hover {
+  color: rgb(175, 56, 19);
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Stick', sans-serif;
+  color: rgb(175, 56, 19);
+}
+
+label {
+  display: block;
+  font-family: 'Nunito Sans', sans-serif;
 }
