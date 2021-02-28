@@ -6,7 +6,7 @@ export default class CreatePage extends Component {
   state = {
     kind: '',
     size_id: 1,
-    age: 0,
+    age: '',
     is_fun: false,
   }
 
