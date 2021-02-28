@@ -7,13 +7,13 @@ export default class Header extends Component {
         <div>
           <header className='header-box'>
           <NavLink className='header-link' exact activeClassName="active" 
-          to="/">Home Page</NavLink>
+          to="/">Home</NavLink>
 
           <NavLink className='header-link' exact activeClassName="active" 
-          to="/createAnimal">Create Animal</NavLink>
+          to="/createAnimal">Create New Animal</NavLink>
 
           <NavLink className='header-link' exact activeClassName="active" 
-          to="/wildAnimals">List Animals</NavLink>
+          to="/wildAnimals">List All Animals</NavLink>
 
           </header>
         </div>

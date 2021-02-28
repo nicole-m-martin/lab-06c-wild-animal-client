@@ -30,18 +30,20 @@ export default class CreatePage extends Component {
     console.log(this.state)
     return (
       <div>
-       <div>
-        <div className="form-box">
+        <div className='container'>
+       <div className='form-wrap'>
+       <h1>Add A New Animal</h1>
+        
            <form onSubmit={ this.handleSubmitButton }>
-          <label>
-            Wild Animal Kind
+          <label className='form-group'>
+            Wild Animal Kind:
             <input value={ this.state.kind } onChange={ this.handleKindChange } /> 
           </label>
-          <label>
+          <label className='form-group'>
             How Old? 
             <input type='number' value={ this.state.age } onChange={ this.handleAgeChange } /> 
           </label>
-          <label>
+          <label className='form-group'>
             Is it a fun Wild Animal?
             <input type='checkbox' value={ this.state.is_fun } checked={ this.state.is_fun } onChange={ this.handleIsFunChange } /> 
           </label>
@@ -56,7 +58,8 @@ export default class CreatePage extends Component {
         </form>
         </div>
       </div>
-      </div>
+    </div>
+  
     )
   }
 }

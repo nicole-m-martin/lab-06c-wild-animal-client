@@ -46,11 +46,11 @@ export default class DetailPage extends Component {
     handleSizeChange = (e) => this.setState({ size_id: Number(e.target.value) })
 
     handleDeleteChange = async () => {
-      await deleteOneAnimal(this.state);
+      await deleteOneAnimal(this.props.match.params.animalId, this.state);
       this.props.history.push('/');
   }
 
-    handleSubmitButton = async (e) => {
+    handleSubmitButton = async (e) => { 
       e.preventDefault();
       await updateWildAnimal(this.props.match.params.animalId, this.state)
       this.props.history.push('/wildAnimals')
@@ -58,23 +58,25 @@ export default class DetailPage extends Component {
 
   render() {
     return (
-
-      <div>
-        <div className="form-box">
+    <div>
+        <div className='container'>
+       <div className='form-wrap'>
+       <h1>Update Your Animal</h1>
            <form onSubmit={ this.handleSubmitButton }>
-          <label>
-            Wild Animal Kind
+          <label className='form-group'>
+            Wild Animal Kind:
             <input value={ this.state.kind } onChange={ this.handleKindChange } /> 
           </label>
-          <label>
+          <label className='form-group'>
             How Old? 
             <input type='number' value={ this.state.age } onChange={ this.handleAgeChange } /> 
           </label>
-          <label>
+          <label className='form-group'>
             Is it a fun Wild Animal?
             <input type='checkbox' value={ this.state.is_fun } checked={ this.state.is_fun } onChange={ this.handleIsFunChange } /> 
           </label>
           <label>
+          What size is the Animal? 
           <select value={ this.state.size_id } onChange={ this.handleSizeChange }>
             <option value={1} selected={ this.state.size_id === 1 }>Large</option>
             <option value={2} selected={ this.state.size_id === 2 }>Medium</option>
@@ -83,8 +85,9 @@ export default class DetailPage extends Component {
           </label>
           <button> Update Animal </button>
         </form>
-        <button onClick={this.handleDeleteClick}> Delete Animal </button>
+        <button onClick={this.handleDeleteChange}> Delete Animal </button>
         </div>
+      </div>
       </div>
     )
   }
